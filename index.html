@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mohana .N Portfolio</title>
+<style>
+  /* Reset and basic styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9f9f9;
+    color: #333;
+  }
+
+  header {
+    background: #4a90e2;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  header h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+  }
+
+  nav button:hover,
+  nav button.active {
+    background: #2d5db7;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  section {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  section.active {
+    display: block;
+  }
+
+  h2 {
+    color: #4a90e2;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: square;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive for small devices */
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    nav {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Simple fadeIn animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Contact links styling */
+  .contact-list a {
+    color: #4a90e2;
+    text-decoration: none;
+  }
+
+  .contact-list a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mohana .N</h1>
+  <nav>
+    <button class="nav-btn active" data-target="home">Home</button>
+    <button class="nav-btn" data-target="about">About Me</button>
+    <button class="nav-btn" data-target="certificates">Certificates</button>
+    <button class="nav-btn" data-target="skills">Skills</button>
+    <button class="nav-btn" data-target="contact">Contact</button>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="active">
+    <h2>Welcome to My Portfolio</h2>
+    <p>Hello! I am Mohana .N, a passionate learner and developer. This portfolio showcases my skills, certifications, and contact information. Feel free to explore!</p>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am an enthusiastic individual with a keen interest in web development and design. I enjoy solving problems and creating responsive, user-friendly web applications.</p>
+  </section>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <ul>
+      <li>Certificate in Web Development - XYZ Institute</li>
+      <li>JavaScript Essentials - ABC Academy</li>
+      <li>Responsive Design Workshop - Online Course</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML5, CSS3, JavaScript</li>
+      <li>Responsive Web Design</li>
+      <li>Basic knowledge of React & Node.js</li>
+      <li>Version Control (Git & GitHub)</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:mohana@example.com">mohana@example.com</a></li>
+      <li>Phone: +91 12345 67890</li>
+      <li>LinkedIn: <a href="https://linkedin.com/in/mohana" target="_blank" rel="noopener noreferrer">linkedin.com/in/mohana</a></li>
+      <li>GitHub: <a href="https://github.com/mohana" target="_blank" rel="noopener noreferrer">github.com/mohana</a></li>
+    </ul>
+  </section>
+</main>
+
+<script>
+  // Simple navigation script
+  const buttons = document.querySelectorAll('.nav-btn');
+  const sections = document.querySelectorAll('main section');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      buttons.forEach(b => b.classList.remove('active'));
+      // Add active class to clicked button
+      btn.classList.add('active');
+
+      // Hide all sections
+      sections.forEach(sec => sec.classList.remove('active'));
+      // Show target section
+      const targetId = btn.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
